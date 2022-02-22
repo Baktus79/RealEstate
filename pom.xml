@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>Me.EtienneDx</groupId>
 	<artifactId>RealEstate</artifactId>
@@ -8,7 +6,7 @@
 	<name>RealEstate</name>
 	<description>A spigot plugin for selling, renting and leasing GriefDefender claims</description>
 	<build>
-        <finalName>${project.name}</finalName>
+		<finalName>${project.name}</finalName>
 		<sourceDirectory>src</sourceDirectory>
 		<resources>
 			<resource>
@@ -30,47 +28,39 @@
 				</configuration>
 			</plugin>
 			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.1</version>
-                <configuration>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.2.1</version>
+				<configuration>
 					<createDependencyReducedPom>false</createDependencyReducedPom>
-                    <relocations>
-                        <relocation>
-                            <pattern>co.aikar.commands</pattern>
-                            <shadedPattern>me.EtienneDx.RealEstate.acf</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>co.aikar.locales</pattern>
-                            <shadedPattern>me.EtienneDx.RealEstate.acf</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>me.EtienneDx.AnnotationConfig</pattern>
-                            <shadedPattern>me.EtienneDx.RealEstate.AnnotationConfig</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>net.kyori.event</pattern>
-                            <shadedPattern>com.griefdefender.lib.kyori.event</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>net.kyori.adventure.text</pattern>
-                            <shadedPattern>com.griefdefender.lib.kyori.adventure.text</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>com.flowpowered</pattern>
-                            <shadedPattern>com.griefdefender.lib.flowpowered</shadedPattern>
-                        </relocation>
-                    </relocations>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+					<relocations>
+						<relocation>
+							<pattern>co.aikar.commands</pattern>
+							<shadedPattern>me.EtienneDx.RealEstate.acf</shadedPattern>
+						</relocation>
+						<relocation>
+							<pattern>co.aikar.locales</pattern>
+							<shadedPattern>me.EtienneDx.RealEstate.acf</shadedPattern>
+						</relocation>
+						<relocation>
+							<pattern>me.EtienneDx.AnnotationConfig</pattern>
+							<shadedPattern>me.EtienneDx.RealEstate.AnnotationConfig</shadedPattern>
+						</relocation>
+						<relocation>
+							<pattern>com.flowpowered</pattern>
+							<shadedPattern>com.griefdefender.lib.flowpowered</shadedPattern>
+						</relocation>
+					</relocations>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<distributionManagement>
@@ -95,27 +85,27 @@
 		</repository>
 		<repository>
 			<id>spigot-vault-api</id>
-        	<url>https://ci.ender.zone/plugin/repository/everything/</url>
-        </repository>
+			<url>https://ci.ender.zone/plugin/repository/everything/</url>
+		</repository>
 		<repository>
-	        <id>aikar</id>
-	        <url>https://repo.aikar.co/content/groups/aikar/</url>
-    	</repository>
-    	<!-- EssentialsX repo -->
-    	<repository>
-	        <id>ess-repo</id>
-	        <url>https://ci.ender.zone/plugin/repository/everything/</url>
-	    </repository>
-    	<repository>
-	        <id>glaremasters</id>
-	        <url>https://repo.glaremasters.me/repository/bloodshot</url>
-	    </repository>
+			<id>aikar</id>
+			<url>https://repo.aikar.co/content/groups/aikar/</url>
+		</repository>
+		<!-- EssentialsX repo -->
+		<repository>
+			<id>ess-repo</id>
+			<url>https://ci.ender.zone/plugin/repository/everything/</url>
+		</repository>
+		<repository>
+			<id>glaremasters</id>
+			<url>https://repo.glaremasters.me/repository/bloodshot</url>
+		</repository>
 	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot-api</artifactId>
-			<version>1.16.3-R0.1-SNAPSHOT</version>
+			<version>1.18.1-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -125,26 +115,26 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-	        <groupId>co.aikar</groupId>
-	        <artifactId>acf-bukkit</artifactId>
-	        <version>0.5.0-SNAPSHOT</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>net.ess3</groupId>
-	        <artifactId>EssentialsX</artifactId>
-	        <version>2.16.1</version>
-	        <scope>provided</scope>
-	    </dependency>
-	    <dependency>
-		    <groupId>com.griefdefender</groupId>
-		    <artifactId>api</artifactId>
-		    <version>2.0.0-20211206.072436-12</version>
-		    <scope>provided</scope>
+			<groupId>co.aikar</groupId>
+			<artifactId>acf-bukkit</artifactId>
+			<version>0.5.0-SNAPSHOT</version>
 		</dependency>
-	    <dependency>
-		    <groupId>com.github.EtienneDx</groupId>
-		    <artifactId>AnnotationConfig</artifactId>
-		    <version>cff4221</version>
+		<dependency>
+			<groupId>net.ess3</groupId>
+			<artifactId>EssentialsX</artifactId>
+			<version>2.16.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.griefdefender</groupId>
+			<artifactId>api</artifactId>
+			<version>2.1.0-20220115.234828-1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.EtienneDx</groupId>
+			<artifactId>AnnotationConfig</artifactId>
+			<version>cff4221</version>
 		</dependency>
 	</dependencies>
 </project>
