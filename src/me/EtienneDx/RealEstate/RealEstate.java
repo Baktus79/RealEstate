@@ -10,8 +10,6 @@ import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.earth2me.essentials.Essentials;
-
 import co.aikar.commands.BukkitCommandManager;
 import co.aikar.commands.ConditionFailedException;
 import me.EtienneDx.RealEstate.Transactions.BoughtTransaction;
@@ -37,7 +35,6 @@ public class RealEstate extends JavaPlugin
 	public static boolean vaultPresent = false;
 	public static Economy econ = null;
 	public static Permission perms = null;
-	public static Essentials ess = null;
 
 	public static RealEstate instance = null;
 
@@ -76,10 +73,7 @@ public class RealEstate extends JavaPlugin
 				return;
 			}
 		}
-		if((ess = (Essentials)getServer().getPluginManager().getPlugin("Essentials")) != null)
-		{
-			this.log.info("Found Essentials, using version " + ess.getDescription().getVersion());
-		}
+
 		this.config = new Config();
 		this.config.loadConfig();// loads config or default
 		this.config.saveConfig();// save eventual default

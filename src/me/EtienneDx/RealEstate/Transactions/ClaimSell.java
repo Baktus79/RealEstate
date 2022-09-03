@@ -11,8 +11,6 @@ import org.bukkit.block.Sign;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.earth2me.essentials.User;
-
 import me.EtienneDx.RealEstate.RealEstate;
 import me.EtienneDx.RealEstate.Utils;
 import net.md_5.bungee.api.ChatColor;
@@ -140,17 +138,6 @@ public class ClaimSell extends ClaimTransaction
 								"Y: " + player.getLocation().getBlockY() + ", " +
 								"Z: " + player.getLocation().getBlockZ() + "] " + ChatColor.AQUA + "for " + ChatColor.GREEN +
 								price + " " + RealEstate.econ.currencyNamePlural());
-					}
-					else if(RealEstate.instance.config.cfgMailOffline && RealEstate.ess != null)
-					{
-						final User u = RealEstate.ess.getUser(owner);
-						u.addMail(RealEstate.instance.config.chatPrefix + ChatColor.AQUA + player.getDisplayName() +
-								" has purchased your " + claimType + " at " + ChatColor.BLUE +
-								"[" + player.getLocation().getWorld().getName() + ", " +
-								"X: " + player.getLocation().getBlockX() + ", " +
-								"Y: " + player.getLocation().getBlockY() + ", " +
-								"Z: " + player.getLocation().getBlockZ() + "] " + ChatColor.AQUA + "for " + ChatColor.GREEN +
-								price + " " + RealEstate.econ.currencyNamePlural());;
 					}
 				}
 			}
