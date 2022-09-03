@@ -1,8 +1,8 @@
 name: RealEstate
 main: me.EtienneDx.RealEstate.RealEstate
 version: ${project.version}
-authors: [EtienneDx, DmitryRendov]
-depend: [GriefDefender, Vault]
+authors: [EtienneDx, DmitryRendov, Baktus_79]
+depend: [RegionDefence, Vault]
 softdepend: [Essentials]
 api-version: "1.15"
 

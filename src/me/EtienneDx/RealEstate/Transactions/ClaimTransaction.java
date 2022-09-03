@@ -10,8 +10,7 @@ import org.bukkit.block.Sign;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Player;
 
-import com.griefdefender.api.GriefDefender;
-import com.griefdefender.api.claim.Claim;
+import no.vestlandetmc.rd.handler.Region;
 
 public abstract class ClaimTransaction implements ConfigurationSerializable, Transaction
 {
@@ -19,19 +18,15 @@ public abstract class ClaimTransaction implements ConfigurationSerializable, Tra
 	public UUID owner = null;
 	public double price;
 	public Location sign = null;
-	
-	public ClaimTransaction(Claim claim, Player player, double price, Location sign)
+
+	public ClaimTransaction(Region claim, Player player, double price, Location sign)
 	{
-		this.claimId = claim.getUniqueId();
-		if (claim.isAdminClaim() || GriefDefender.getCore().getAdminUser().getUniqueId().equals(claim.getOwnerUniqueId())) {
-		    this.owner = null;
-		} else {
-		    this.owner = player != null ? player.getUniqueId() : null;
-		}
+		this.claimId = claim.getRegionID();
+		this.owner = player != null ? player.getUniqueId() : null;
 		this.price = price;
 		this.sign = sign;
 	}
-	
+
 	public ClaimTransaction(Map<String, Object> map)
 	{
 		this.claimId = UUID.fromString(String.valueOf(map.get("claimId")));
@@ -41,24 +36,24 @@ public abstract class ClaimTransaction implements ConfigurationSerializable, Tra
 		if(map.get("signLocation") != null)
 			this.sign = (Location) map.get("signLocation");
 	}
-	
+
 	public ClaimTransaction()
 	{
-		
+
 	}
 
 	@Override
 	public Map<String, Object> serialize()
 	{
-		Map<String, Object> map = new HashMap<>();
-		
+		final Map<String, Object> map = new HashMap<>();
+
 		map.put("claimId", this.claimId.toString());
 		if(owner != null)
 			map.put("owner", owner.toString());
 		map.put("price", this.price);
 		if(sign != null)
 			map.put("signLocation", sign);
-		
+
 		return map;
 	}
 
@@ -73,7 +68,7 @@ public abstract class ClaimTransaction implements ConfigurationSerializable, Tra
 	{
 		return owner;
 	}
-	
+
 	@Override
 	public boolean tryCancelTransaction(Player p)
 	{
