@@ -32,7 +32,8 @@ public class ClaimPermissionListener implements Listener {
 		final User user = RegionManager.getUser(event.getPlayer().getUniqueId());
 		if(user.ignoringClaims()) { return; }
 		// we only have to remove the owner's access
-		if(transaction != null && event.getPlayer().getUniqueId().equals(transaction.getOwner()) &&
+
+		if(transaction != null && user.getUniqueId().equals(transaction.getOwner()) &&
 				transaction instanceof BoughtTransaction && ((BoughtTransaction)transaction).getBuyer() != null) {
 			event.getPlayer().sendMessage(ChatColor.RED + "This claim is currently involved in a transaction, you can't access it!");
 			event.setCancelled(true);
